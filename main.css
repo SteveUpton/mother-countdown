@@ -1,0 +1,255 @@
+@font-face {
+  font-family: 'OPTIAgency-Gothic';
+  src:url('fonts/OPTIAgency-Gothic.ttf.woff') format('woff'),
+      url('fonts/OPTIAgency-Gothic.ttf.svg#OPTIAgency-Gothic') format('svg'),
+      url('fonts/OPTIAgency-Gothic.ttf.eot'),
+      url('fonts/OPTIAgency-Gothic.ttf.eot?#iefix') format('embedded-opentype'); 
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  color: #000;
+  background-color: #000;
+}
+
+.text {
+  font-family: 'OPTIAgency-Gothic', arial;
+  font-size: 56px;
+  color: #d97719;
+  text-shadow: 0px 0px 10px #d97719;
+}
+
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.digit-box {
+  float: left;
+  display: inline-block;
+  border-style: solid;
+  border-color: #d97719;
+  border-width: 1px;
+  box-shadow: 0 0 5px #d97719;
+  width: 42px;
+  text-align:center
+}
+
+.digit-second {
+  color: #fff;
+  text-shadow: 0px 0px 10px #fff;
+}
+
+#timer-box {
+  position: absolute;
+  width: 220px;
+	height: 70px;
+  border-style: solid;
+  border-color: #d97719;
+  border-width: 5px;
+  box-shadow: 0 0 10px #d97719;
+  top: calc(50% - 35px);
+  left: auto;
+  transform: translate(-10px, 0);
+}
+
+#octagon-wrapper {
+  clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+  -webkit-clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+  position: absolute;
+  height: calc(65vw);
+  max-height: 80%;
+	width: 80vw;
+  max-width: calc(96vh);
+  border-style: solid;
+  border-color: #d97719;
+  border-width: 5px;
+  background-color: #d97719;
+}
+
+#octagon {
+  clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+  -webkit-clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+  position: absolute;
+  height: calc(65vw);
+  max-height: calc(100% - 12px);
+	width: 80vw;
+  max-width: calc(100% - 12px);
+  border-style: solid;
+  border-width: 5px;
+  background-color: black;
+}
+
+.square {
+  position: fixed;
+  width: calc(1000px);
+  height: calc(1000px);
+  top: calc(50% + 5px);
+  left: calc(50%);
+  border-style: solid;
+  border-color: #d97719;
+  border-width: 5px;
+  box-shadow: 0 0 30px #d97719, inset 0 0 30px #d97719;
+
+  transform-origin: top left;
+
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-timing-function: step-start;
+}
+
+@keyframes square-bottom {
+  0%   { transform: rotate(45deg) translateY(calc(-2.5px + 6%)) translateX(calc(-2.5px + 6%)); }
+  20%  { transform: rotate(45deg) translateY(calc(-2.5px + 4.5%)) translateX(calc(-2.5px + 4.5%)); }
+  40%  { transform: rotate(45deg) translateY(calc(-2.5px + 3%)) translateX(calc(-2.5px + 3%)); }
+  60%  { transform: rotate(45deg) translateY(calc(-2.5px + 1.5%)) translateX(calc(-2.5px + 1.5%)); }
+  80%  { transform: rotate(45deg) translateY(calc(-2.5px + 0%)) translateX(calc(-2.5px + 0%)); }
+  100% { transform: rotate(45deg) translateY(calc(-2.5px + 0%)) translateX(calc(-2.5px + 0%)); }}
+
+#square-bottom {
+  animation-name: square-bottom;
+  transform: rotate(45deg) translateY(-2.5px) translateX(-2.5px);
+}
+
+@keyframes square-left {
+  0%   { transform: rotate(135deg) translateY(calc(-2.5px + 6%)) translateX(calc(-2.5px + 6%)); }
+  20%  { transform: rotate(135deg) translateY(calc(-2.5px + 4.5%)) translateX(calc(-2.5px + 4.5%)); }
+  40%  { transform: rotate(135deg) translateY(calc(-2.5px + 3%)) translateX(calc(-2.5px + 3%)); }
+  60%  { transform: rotate(135deg) translateY(calc(-2.5px + 1.5%)) translateX(calc(-2.5px + 1.5%)); }
+  80%  { transform: rotate(135deg) translateY(calc(-2.5px + 0%)) translateX(calc(-2.5px + 0%)); }
+  100% { transform: rotate(135deg) translateY(calc(-2.5px + 0%)) translateX(calc(-2.5px + 0%)); }
+}
+
+#square-left {
+  animation-name: square-left;
+  transform: rotate(135deg) translateY(-2.5px) translateX(-2.5px);
+}
+
+@keyframes square-top {
+  0%   { transform: rotate(225deg) translateY(calc(-2.5px + 6%)) translateX(calc(-2.5px + 6%)); }
+  20%  { transform: rotate(225deg) translateY(calc(-2.5px + 4.5%)) translateX(calc(-2.5px + 4.5%)); }
+  40%  { transform: rotate(225deg) translateY(calc(-2.5px + 3%)) translateX(calc(-2.5px + 3%)); }
+  60%  { transform: rotate(225deg) translateY(calc(-2.5px + 1.5%)) translateX(calc(-2.5px + 1.5%)); }
+  80%  { transform: rotate(225deg) translateY(calc(-2.5px + 0%)) translateX(calc(-2.5px + 0%)); }
+  100% { transform: rotate(225deg) translateY(calc(-2.5px + 0%)) translateX(calc(-2.5px + 0%)); }
+}
+
+#square-top {
+  animation-name: square-top;
+  transform: rotate(225deg) translateY(-2.5px) translateX(-2.5px);
+}
+
+@keyframes square-right {
+  0%   { transform: rotate(315deg) translateY(calc(-2.5px + 6%)) translateX(calc(-2.5px + 6%)); }
+  20%  { transform: rotate(315deg) translateY(calc(-2.5px + 4.5%)) translateX(calc(-2.5px + 4.5%)); }
+  40%  { transform: rotate(315deg) translateY(calc(-2.5px + 3%)) translateX(calc(-2.5px + 3%)); }
+  60%  { transform: rotate(315deg) translateY(calc(-2.5px + 1.5%)) translateX(calc(-2.5px + 1.5%)); }
+  80%  { transform: rotate(315deg) translateY(calc(-2.5px + 0%)) translateX(calc(-2.5px + 0%)); }
+  100% { transform: rotate(315deg) translateY(calc(-2.5px + 0%)) translateX(calc(-2.5px + 0%)); }
+}
+
+#square-right {
+  animation-name: square-right;
+  transform: rotate(315deg) translateY(-2.5px) translateX(-2.5px);
+}
+
+/* CRT effect from http://aleclownes.com/2017/02/01/crt-display.html */
+
+@keyframes flicker {
+  0% {
+  opacity: 0.27861;
+  }
+  5% {
+  opacity: 0.34769;
+  }
+  10% {
+  opacity: 0.23604;
+  }
+  15% {
+  opacity: 0.90626;
+  }
+  20% {
+  opacity: 0.18128;
+  }
+  25% {
+  opacity: 0.83891;
+  }
+  30% {
+  opacity: 0.65583;
+  }
+  35% {
+  opacity: 0.67807;
+  }
+  40% {
+  opacity: 0.26559;
+  }
+  45% {
+  opacity: 0.84693;
+  }
+  50% {
+  opacity: 0.96019;
+  }
+  55% {
+  opacity: 0.08594;
+  }
+  60% {
+  opacity: 0.20313;
+  }
+  65% {
+  opacity: 0.71988;
+  }
+  70% {
+  opacity: 0.53455;
+  }
+  75% {
+  opacity: 0.37288;
+  }
+  80% {
+  opacity: 0.71428;
+  }
+  85% {
+  opacity: 0.70419;
+  }
+  90% {
+  opacity: 0.7003;
+  }
+  95% {
+  opacity: 0.36108;
+  }
+  100% {
+  opacity: 0.24387;
+  }
+}
+
+.crt::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 2;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+
+.crt::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(18, 16, 16, 0.1);
+  opacity: 0;
+  z-index: 2;
+  pointer-events: none;
+  animation: flicker 0.15s infinite;
+}

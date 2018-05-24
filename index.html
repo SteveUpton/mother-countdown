@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>MOTHER</title>
+  <meta name="description" content="Countdown timer based on MOTHER from ALIEN">
+  <meta name="author" content="Steve Upton">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+  <script>
+    $( document ).ready(function() {
+
+      // http://stackoverflow.com/a/10073788/1214161
+      // https://www.sitepoint.com/build-javascript-countdown-timer-no-dependencies/
+
+      function doEverything() {
+        var endTime = new Date(Date.now() + 640000);
+        var interval = setInterval(function() {
+          var t = endTime - new Date();
+
+          if (t <= 0) {
+            clearInterval(interval);
+            return;
+          }
+
+          var minutes = Math.floor( (t/1000/60) % 60 )+'';
+          var minutesString = minutes.length >= 2 ? minutes : new Array(2 - minutes.length + 1).join(0) + minutes;
+          $( '#digit-minute-1' )
+            .html( minutesString[0] );
+          $( '#digit-minute-2' )
+            .html( minutesString[1] );
+
+          var seconds = Math.floor( (t/1000) % 60 )+'';
+          var secondsString = seconds.length >= 2 ? seconds : new Array(2 - seconds.length + 1).join(0) + seconds;
+          $( '#digit-second-1' )
+            .html( secondsString[0] );
+          $( '#digit-second-2' )
+            .html( secondsString[1] );
+
+          var deciseconds = Math.floor( ((t/100) % 60 ) )+'';
+          $( '#digit-decisecond' )
+            .html( deciseconds[deciseconds.length - 1] );
+        }, 50);
+      }
+
+      doEverything();
+
+    });
+  </script>
+  
+  <div id="octagon-wrapper" class="centered crt">
+    <div id="octagon" class="centered">
+      <div id="square-top" class="square"></div>
+      <div id="square-bottom" class="square"></div>
+      <div id="square-left" class="square"></div>
+      <div id="square-right" class="square"></div>
+      <div id="timer-box">
+        <span id="digit-minute-1" class="text digit-box">0</span>
+        <span id="digit-minute-2" class="text digit-box">0</span>
+        <span id="digit-second-1" class="text digit-box digit-second">0</span>
+        <span id="digit-second-2" class="text digit-box digit-second">0</span>
+        <span id="digit-decisecond" class="text digit-box">0</span>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

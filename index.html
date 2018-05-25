@@ -13,41 +13,45 @@
   <script>
     $( document ).ready(function() {
 
-      // http://stackoverflow.com/a/10073788/1214161
-      // https://www.sitepoint.com/build-javascript-countdown-timer-no-dependencies/
+      var time = prompt("Minutes to countdown", "10");
+      time = Math.abs(isNaN(time) ? 600000 : (60000 * time)) || 600000;
+      const endTime = new Date(Date.now() + time);
 
-      function doEverything() {
-        var endTime = new Date(Date.now() + 640000);
-        var interval = setInterval(function() {
-          var t = endTime - new Date();
+      var timer = setInterval(tick, 50);
 
-          if (t <= 0) {
-            clearInterval(interval);
-            return;
-          }
+      function tick() {
+        // http://stackoverflow.com/a/10073788/1214161
+        // https://www.sitepoint.com/build-javascript-countdown-timer-no-dependencies/
 
-          var minutes = Math.floor( (t/1000/60) % 60 )+'';
-          var minutesString = minutes.length >= 2 ? minutes : new Array(2 - minutes.length + 1).join(0) + minutes;
-          $( '#digit-minute-1' )
-            .html( minutesString[0] );
-          $( '#digit-minute-2' )
-            .html( minutesString[1] );
+        var t = endTime - new Date();
+        var minutes = Math.floor( (t/1000/60) % 60 )+'';
+        var minutesString = minutes.length >= 2 ? minutes : new Array(2 - minutes.length + 1).join(0) + minutes;
+        $( '#digit-minute-1' ).html( minutesString[0] );
+        $( '#digit-minute-2' ).html( minutesString[1] );
 
-          var seconds = Math.floor( (t/1000) % 60 )+'';
-          var secondsString = seconds.length >= 2 ? seconds : new Array(2 - seconds.length + 1).join(0) + seconds;
-          $( '#digit-second-1' )
-            .html( secondsString[0] );
-          $( '#digit-second-2' )
-            .html( secondsString[1] );
+        var seconds = Math.floor( (t/1000) % 60 )+'';
+        var secondsString = seconds.length >= 2 ? seconds : new Array(2 - seconds.length + 1).join(0) + seconds;
+        $( '#digit-second-1' ).html( secondsString[0] );
+        $( '#digit-second-2' ).html( secondsString[1] );
 
-          var deciseconds = Math.floor( ((t/100) % 60 ) )+'';
-          $( '#digit-decisecond' )
-            .html( deciseconds[deciseconds.length - 1] );
-        }, 50);
+        var deciseconds = Math.floor( ((t/100) % 60 ) )+'';
+        $( '#digit-decisecond' ).html( deciseconds[deciseconds.length - 1] );
+
+        if (t <= 0) end();
       }
 
-      doEverything();
-
+      function end() {
+        clearInterval(timer);
+        $( '#digit-minute-1' ).html( 0 );
+        $( '#digit-minute-2' ).html( 0 );
+        $( '#digit-second-1' ).html( 0 );
+        $( '#digit-second-2' ).html( 0 );
+        $( '#digit-decisecond' ).html( 0 );
+        $( '.square' ).css({
+          'animation-play-state': 'paused',
+          'animation-duration': '0s'
+        });
+      }
     });
   </script>
   
